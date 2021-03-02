@@ -9,9 +9,9 @@ class Validator {
         'digits' => '/[0-9]+$/',
         'text' => '/[A-Za-z0-9_]+$/',
         'whitespace' => '/^[^\s]+$/',
-        'password_weak' => '/^(?=.*[0-9])$/', //digit
-        'password_medium' => '/^(?=.*[0-9])(?=.*[A-Z])$/', //uppercase, digit
-        'password_strong' => '/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z])$/' //uppercase, digit, specialchar
+        'password_weak' => '/(?=^.{6,}$)(?=.{0,}[a-z])(?=.{0,}\d)/', //digit, min length 6
+        'password_medium' => '/(?=^.{6,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\d)/', //uppercase, digit, min length 6
+        'password_strong' => '/(?=^.{8,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\W)(?=.{0,}\d)/' //uppercase, digit, specialchar, min length 8
     ];
 
     private $dataMessages;
