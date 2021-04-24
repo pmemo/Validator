@@ -7,7 +7,7 @@ class Validator {
     private static $patterns = [
         'email' => '/[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/',
         'digits' => '/[0-9]+$/',
-        'text' => '/[A-Za-z0-9_]+$/',
+        'text' => '/[A-Za-z0-9_żźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/',
         'whitespace' => '/^[^\s]+$/',
         'password_weak' => '/(?=^.{6,}$)(?=.{0,}[a-z])(?=.{0,}\d)/', //digit, min length 6
         'password_medium' => '/(?=^.{6,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\d)/', //uppercase, digit, min length 6
@@ -51,7 +51,7 @@ class Validator {
                         }
                         array_push($messages[$dataName], $this->getMessage($cName, $cArgs, $dataName));
                     }
-                } else {
+                } else if($cName === 'required') {
                     if(!isset($messages[$dataName])) {
                         $messages[$dataName] = [];
                     }
